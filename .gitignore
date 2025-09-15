@@ -1,0 +1,64 @@
+# Build artifacts
+target/
+build/
+
+# Maven-specific
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle-specific
+.gradle/
+*.iml
+.idea/
+.project
+.classpath
+.settings/
+bin/
+
+# Eclipse-specific
+.project
+.classpath
+.settings/
+bin/
+
+# IntelliJ-specific
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# STS (Spring Tool Suite) specific
+.metadata/
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Environment variables and sensitive data
+# It is crucial to ignore files containing sensitive information like API keys, database credentials, etc.
+# For Spring Boot, this often includes application-specific properties or configuration files
+# that contain sensitive data, especially for production environments.
+# Example:
+# src/main/resources/application-prod.properties
+# application.properties (if it contains sensitive data not meant for sharing)
+# .env
+
+# Other files
+*.swp
+*.bak
+*.orig
