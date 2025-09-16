@@ -23,4 +23,7 @@ public class Question {
 
     @Column(name = "is_required")
     private Boolean isRequired;
+    
+    @Transient
+    private String questionTextLocal;
 }

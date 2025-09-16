@@ -1,14 +1,17 @@
 spring:
   datasource:
-    url: jdbc:mysql://10.10.13.54:3307/ip_checklist?useSSL=false&allowPublicKeyRetrieval=true&wait_timeout=28800
-    username: dbdevl3
-    password: lxEC03haDMdb
+    #url: jdbc:mysql://10.10.13.54:3307/ip_checklist?useSSL=false&allowPublicKeyRetrieval=true&wait_timeout=28800
+    #username: dbdevl3
+    #password: lxEC03haDMdb
+    url: jdbc:mysql://localhost:3306/ip_checklist?useSSL=false&allowPublicKeyRetrieval=true&wait_timeout=28800
+    username: root
+    password: Root@123
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         format_sql: true
@@ -17,18 +20,17 @@ spring:
 server:
   port: 9090
 
-bhasini:
-  base-url: "https://api.bhashini.gov.in"
-  api-key: "DEV_API_KEY"
-  secret: "DEV_SECRET"
+bhashini:
+  api:
+    endpoint: https://anuvaad-backend.bhashini.co.in/v1/pipeline
+    ulcaApiKey: 0928306623-67cd-4e15-be92-4b0ca33a6204
+    userId: c6f96da78b7b464b99766144690bbab3
+  translation:
+    serviceId: ai4bharat/indictrans-v2-all-gpu--t4
+  tts:
+    serviceId: ai4bharat/indic-tts-coqui-indo_aryan-gpu--t4
   
 cors:
   allowed-origins: http://localhost:5173
-  
-  # Google Cloud project
-google:
- project-id: project-4d5709f9-bba1-4874-984
- translate.location: global
- api-key: AIzaSyAeoedB74zQZiKRDBnIopfrz95hu4B1VIU
 
 
