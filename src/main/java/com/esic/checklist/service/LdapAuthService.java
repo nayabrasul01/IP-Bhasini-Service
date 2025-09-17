@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Service
 public class LdapAuthService {
 
@@ -29,10 +32,10 @@ public class LdapAuthService {
             return true;
 
 		} catch (NamingException e) {
-			System.out.println("Auth failed: " + e.getMessage());
+			log.error("Auth failed: " + e.getMessage());
 			return false;
 		} catch (Exception e) {
-			System.out.println("Unexpected error: " + e.getMessage());
+			log.error("Unexpected error: " + e.getMessage());
 			return false;
 		}
 	}
