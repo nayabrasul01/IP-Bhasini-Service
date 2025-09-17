@@ -6,6 +6,6 @@ import lombok.Data;
 public class ResponseDto {
     private Long questionnaireId;
     private Long questionId;
-    private Long userId;
+    private String userId;
     private String responseValue;
 }

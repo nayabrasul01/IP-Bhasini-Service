@@ -43,8 +43,7 @@ public class TranslationService {
 	public TranslationResponse translate(String text, String sourceLang, String targetLang) {
 		// Build request
 		TranslationRequest request = TranslationRequestBuilder.buildTranslationRequest(text, sourceLang, targetLang,
-				translationServiceId);
-
+				translationServiceId, ttsServiceId);
 		try {
 			// Prepare headers
 			HttpHeaders headers = new HttpHeaders();

@@ -6,29 +6,32 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "checklist_responses")
+@Table(
+	name = "checklist_responses", 
+	uniqueConstraints = {
+	@UniqueConstraint(columnNames = { "question_id", "user_id" }) })
 @Data
 public class Response {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "response_id")
-    private Long responseId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "response_id")
+	private Long responseId;
 
-    @ManyToOne
-    @JoinColumn(name = "questionnaire_id", nullable = false)
-    private Questionnaire questionnaire;
+	@ManyToOne
+	@JoinColumn(name = "questionnaire_id", nullable = false)
+	private Questionnaire questionnaire;
 
-    @ManyToOne
-    @JoinColumn(name = "question_id", nullable = false)
-    private Question question;
+	@ManyToOne
+	@JoinColumn(name = "question_id", nullable = false)
+	private Question question;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+	@Column(name = "user_id", nullable = false)
+	private String userId;
 
-    @Column(name = "response_value")
-    private String responseValue; // Y / N
+	@Column(name = "response_value")
+	private String responseValue; // Y / N
 
-    @Column(name = "created_at", updatable = false, insertable = false)
-    private LocalDateTime createdAt;
+	@Column(name = "created_at", updatable = false, insertable = false)
+	private LocalDateTime createdAt;
 }

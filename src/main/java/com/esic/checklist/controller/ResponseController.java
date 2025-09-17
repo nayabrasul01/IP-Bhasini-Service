@@ -18,12 +18,12 @@ public class ResponseController {
 
     @PostMapping
     public ResponseEntity<String> saveResponse(@RequestBody ResponseDto dto) {
-        responseService.saveResponse(dto);
+        responseService.saveOrUpdateResponse(dto);
         return ResponseEntity.ok("Saved");
     }
 
     @GetMapping("/user/{userId}/questionnaire/{qid}")
-    public List<Response> getResponses(@PathVariable Long userId, @PathVariable Long qid) {
+    public List<Response> getResponses(@PathVariable String userId, @PathVariable Long qid) {
         return responseService.getResponses(userId, qid);
     }
 }

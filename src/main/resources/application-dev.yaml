@@ -32,5 +32,9 @@ bhashini:
   
 cors:
   allowed-origins: http://localhost:5173
+  
+url:
+  his:
+    endpoint: http://10.10.13.131/INS_HIS_LiveLIst/HIS/LiveListDetails
 
 

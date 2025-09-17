@@ -26,4 +26,7 @@ public class Question {
     
     @Transient
     private String questionTextLocal;
+    
+    @Transient
+    private String audioContent;
 }
