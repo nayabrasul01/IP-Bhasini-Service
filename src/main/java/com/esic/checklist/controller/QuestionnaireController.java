@@ -41,7 +41,8 @@ public class QuestionnaireController {
     @GetMapping("/{id}/questions/{targetLanguage}")
     public List<Question> getQuestions(@PathVariable Long id, @PathVariable String targetLanguage) {
     	List<Question> questions = questionnaireService.getQuestions(id);
-//    	for(int i = 0; i < questions.size() - 5; i++) {
+    	// for testing only
+//    	for(int i = 0; i < questions.size() - 2; i++) {
 //			questions.remove(i);
 //		}
     	questions.forEach( question -> {

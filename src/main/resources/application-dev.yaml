@@ -15,6 +15,21 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+ #LDAP configuration
+ldap:
+  url: ldap://esic-oud-01.esic.gov.in:1389
+  base: ou=employeegroup,o=esic.in,o=esic
+  userDn: cn=socadmin,ou=admin,o=esic
+  password: SOC@2025#admin
+  # Which attribute to search users by (cn / uid / sAMAccountName)
+  userSearchAttribute: cn
+  
+  
+jwt:
+  secret: 47528693cc1b4c1d62888eddfe97633bf7d91a78de844fa2c44c34a0ad30aa72
+  expiration: 180000 #(30 minutes)
 
 
 server:
