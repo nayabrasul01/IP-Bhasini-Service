@@ -8,4 +8,5 @@ public class ResponseDto {
     private Long questionId;
     private String userId;
     private String responseValue;
+    private String createdBy;
 }

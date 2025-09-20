@@ -34,6 +34,7 @@ public class ResponseService {
 		response.setQuestion(question);
 		response.setUserId(dto.getUserId());
 		response.setResponseValue(dto.getResponseValue());
+		response.setCreatedby(dto.getCreatedBy());
 
 		responseRepository.save(response);
 	}
@@ -41,7 +42,7 @@ public class ResponseService {
 	@Transactional
 	public void saveOrUpdateResponse(ResponseDto response) {
 		responseRepository.upsertResponse(response.getQuestionnaireId(), response.getQuestionId(), response.getUserId(),
-				response.getResponseValue());
+				response.getResponseValue(), response.getCreatedBy());
 	}
 
 	public List<Response> getResponses(String userId, Long questionnaireId) {

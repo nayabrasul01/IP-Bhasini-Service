@@ -10,7 +10,7 @@ import com.esic.checklist.model.TranslationResponse;
 import com.esic.checklist.service.TranslationService;
 
 @RestController
-@RequestMapping("/translate")
+@RequestMapping("/api/translate")
 public class TranslationController {
 
     private final TranslationService translationService;

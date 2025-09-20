@@ -17,11 +17,11 @@ public interface ResponseRepository extends JpaRepository<Response, Long> {
 
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO checklist_responses (questionnaire_id, question_id, user_id, response_value) "
-			+ "VALUES (:questionnaireId, :questionId, :userId, :responseValue) "
+	@Query(value = "INSERT INTO checklist_responses (questionnaire_id, question_id, user_id, response_value, created_by) "
+			+ "VALUES (:questionnaireId, :questionId, :userId, :responseValue, :created_by) "
 			+ "ON DUPLICATE KEY UPDATE response_value = VALUES(response_value)", nativeQuery = true)
 	void upsertResponse(@Param("questionnaireId") Long questionnaireId, @Param("questionId") Long questionId,
-			@Param("userId") String userId, @Param("responseValue") String responseValue);
+			@Param("userId") String userId, @Param("responseValue") String responseValue, @Param("created_by") String created_by);
 
 	List<Response> findByUserIdAndQuestionnaireAndQuestion(Long userId, Questionnaire questionnaire, Question question);
 }

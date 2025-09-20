@@ -26,16 +26,20 @@ public class LdapAuthService {
 		try {
 			
 			// Construct user DN (adjust OU as per your LDAP tree)
+			log.info("Authenticating user: " + username);	
             String userDn = "uid=" + username + ",ou=employeegroup,o=esic.in,o=esic";
             DirContext ctx = contextSource.getContext(userDn, password);
+            log.info("Authentication successful for user: " + username);
             ctx.close();
             return true;
 
 		} catch (NamingException e) {
 			log.error("Auth failed: " + e.getMessage());
+			log.info("Authentication failure for user: " + username);
 			return false;
 		} catch (Exception e) {
 			log.error("Unexpected error: " + e.getMessage());
+			log.info("Authentication failure for user: " + username);
 			return false;
 		}
 	}

@@ -1,9 +1,13 @@
 package com.esic.checklist.utility;
 
 import java.util.Date;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import com.esic.checklist.repository.LoggedInUserRepository;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -17,6 +21,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Component
 public class JwtUtil {
+	
+	@Autowired
+	private LoggedInUserRepository loggedInUserRepository;
 
     
     @Value("${jwt.secret}")
@@ -32,6 +39,7 @@ public class JwtUtil {
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
+                .setId(UUID.randomUUID().toString())
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }
@@ -42,8 +50,10 @@ public class JwtUtil {
 
     public boolean validateToken(String token) {
 		try {
-			getClaims(token);
-			return true;
+			Claims claims = getClaims(token);
+			
+			String jti = claims.getId(); // maps to session_id
+	        return loggedInUserRepository.existsBySessionIdAndIsValid(jti, true);
 		} catch (ExpiredJwtException e) {
 			log.warn("Token expired: {}", e.getMessage());
 		} catch (UnsupportedJwtException e) {
@@ -58,15 +68,20 @@ public class JwtUtil {
 		return false;
 	}
 
-	private Claims getClaims(String token) {
-		return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+	public Claims getClaims(String token) {
+		return Jwts.parser()
+				.setSigningKey(secret)
+				.parseClaimsJws(token)
+				.getBody();
 	}
 	
-	public Claims extractAllClaims(String token) {
+	public String extractJti(String token) {
 	    return Jwts.parserBuilder()
-	            .setSigningKey(secret)
-	            .build()
+	    		.setSigningKey(secret)
+	    		.build()
 	            .parseClaimsJws(token)
-	            .getBody();
-	}
+	            .getBody()
+	            .getId();
+    }
+
 }

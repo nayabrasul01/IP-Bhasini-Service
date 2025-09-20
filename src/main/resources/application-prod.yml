@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://10.10.13.54:3307/ip_checklist?useSSL=false&allowPublicKeyRetrieval=true&wait_timeout=28800
+    url: jdbc:mysql://10.10.15.218:3306/ip_checklist?useSSL=false&allowPublicKeyRetrieval=true&wait_timeout=28800
     username: dbdevl3
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -16,9 +16,9 @@ spring:
 
  #LDAP configuration
 ldap:
-  url: ldap://esic-oud-01.esic.gov.in:1389
+  url: ldap://vdc-ldap1.esic.gov.in:1389
   base: ou=employeegroup,o=esic.in,o=esic
-  userDn: cn=socadmin,ou=admin,o=esic
+  userDn: cn=snsadmin,ou=admin,o=esic
   password: ${LDAP_PASSWORD}
   # Which attribute to search users by (cn / uid / sAMAccountName)
   userSearchAttribute: cn
@@ -42,7 +42,7 @@ cors:
   
 url:
   his:
-    endpoint: http://10.10.13.131/INS_HIS_LiveLIst/HIS/LiveListDetails
+    endpoint: http://10.10.36.21/INS_HIS_LiveLIst/HIS/LiveListDetails
 
 
 # logging location and levels

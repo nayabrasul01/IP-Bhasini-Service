@@ -29,7 +29,7 @@ ldap:
   
 jwt:
   secret: 47528693cc1b4c1d62888eddfe97633bf7d91a78de844fa2c44c34a0ad30aa72
-  expiration: 180000 #(30 minutes)
+  expiration: 1800000 #(30 minutes)
 
 
 server:
@@ -45,11 +45,24 @@ bhashini:
   tts:
     serviceId: ai4bharat/indic-tts-coqui-indo_aryan-gpu--t4
   
+#cors:
+ # allowed-origins: http://localhost:5173
+  
 cors:
-  allowed-origins: http://localhost:5173
+  allowed-origins: >
+    https://snspstag.esic.gov.in,
+    http://snspstag.esic.gov.in,
+    http://10.10.13.195:7777
   
 url:
   his:
-    endpoint: http://10.10.13.131/INS_HIS_LiveLIst/HIS/LiveListDetails
+    endpoint: http://10.10.36.21/INS_HIS_LiveLIst/HIS/LiveListDetails #PROD Url
+
+# logging location and levels
+logging:
+  level:
+    root: INFO
+  file:
+    path: /Users/nayabrasulshaik/Documents/Projects/logs/narisakthiapp/
 
 

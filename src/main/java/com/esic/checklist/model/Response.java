@@ -34,4 +34,7 @@ public class Response {
 
 	@Column(name = "created_at", updatable = false, insertable = false)
 	private LocalDateTime createdAt;
+	
+	@Column(name = "created_by", nullable = false)
+	private String createdby;
 }
