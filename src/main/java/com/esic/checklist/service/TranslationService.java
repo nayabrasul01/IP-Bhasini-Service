@@ -54,11 +54,12 @@ public class TranslationService {
 		TranslationRequest request = TranslationRequestBuilder.buildTranslationRequest(text, sourceLang, targetLang,
 				translationServiceId, ttsServiceId);
 		
-		try {
-			log.info("Transaltion request: " + objectMapper.writeValueAsString(request));
-		} catch (JsonProcessingException e) {
-			log.error("Error parsing translation request: " + request);		
-		}
+//		try {
+//			log.info("Transaltion request: " + objectMapper.writeValueAsString(request));
+//		} catch (JsonProcessingException e) {
+//			log.error("Error parsing translation request: " + request);		
+//		}
+		
 		try {
 			// Prepare headers
 			HttpHeaders headers = new HttpHeaders();
